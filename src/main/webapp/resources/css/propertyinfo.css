@@ -1,0 +1,38 @@
+#propertyimg{
+	margin-top: 10%;
+	width: 30%;
+}
+#propertyname{
+	text-align: left;
+	font-size: 1.7em;
+	margin-left: 10%;
+}
+#propertyinfo{
+	background-color: #e1ddd8;
+	border-radius: 20px;
+	padding: 5% 5% 12% 5%;
+	margin: 5%;
+	width: 80%;
+	text-align: left;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+#back{
+	margin-left: 95%;
+	width: 5%;
+}
+#sale, #upgrade, #buy{
+	float: left;
+	width: 20%;
+	margin-top: 3%;
+	border-radius: 10px;
+}
+#sale{
+	margin-left: 58%;
+}
+#upgrade{
+	margin-left: 1%;
+}
+#buy{
+	margin-left: 80%;
+}

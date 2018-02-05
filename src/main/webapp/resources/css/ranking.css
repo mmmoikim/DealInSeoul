@@ -1,0 +1,30 @@
+ul{
+	list-style: none;
+	text-align: left;
+	size: 10%;
+}
+#content{
+	background-color: #e1ddd8;
+	border-radius: 20px;
+	margin-left: 5%;
+	margin-top: 5%;
+	width: 90%;
+}
+#rankhead{
+	padding: 1%;
+}
+#btnx{
+	margin-left: 90%;
+	margin-top: -10%;
+	width: 5%;
+}
+.rank{
+	height: 26px;
+}
+.rank1, .rank2{
+	font-size: 20px;
+	padding: 2px;
+}
+.rank1{
+	margin-left: -70%;
+}

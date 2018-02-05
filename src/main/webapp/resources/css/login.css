@@ -1,0 +1,57 @@
+html, body{
+	margin: 0px;
+	padding: 0px;
+}
+#input1{
+	margin-top: 10%;
+	margin-left: 10%;
+	width: 80%;
+}
+#inputE, #inputP{
+	height: 50px;
+}
+#input2{
+	margin-left: 10%;
+	margin-top: 10%;
+	width: 80%;
+	color: white;
+}
+
+#checkboxlabel{
+	margin-left: 40px;
+	margin-top: -11px;
+	font-weight: bold;
+}
+#btnLogin, #btnSingup {
+	position: absolute;
+	width: 50%;
+	margin: 0px;
+	padding: 0px;
+	bottom: 0%;
+}
+#btnLogin {
+	left: 0%;
+}
+#btnSingup{
+	left: 50%;
+}
+#searchpasswordlabel{
+	font-weight: bold;
+}
+#checkbox, #searchpassword{
+	float: left;
+	width: 20px;
+	height: 20px;
+}
+#linksearchpassword{
+	color: white;
+	text-decoration: none;
+}
+#logo{
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 10%;
+}
+#logoimg{
+	width: 100%;
+}

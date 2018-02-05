@@ -1,0 +1,81 @@
+#content{
+	background-color: #e1ddd8;
+	border-radius: 20px;
+	margin-left: 5%;
+	margin-top: 5%;
+	width: 90%;
+}
+#mypropertyhead{
+	padding: 1%;
+}
+#btnx{
+	margin-left: 90%;
+	margin-top: -10%;
+	width: 5%;
+}
+#myinfos{
+	border-color: black;
+	border-style: solid;
+	border-top: 1px;
+	border-bottom: 1px;	
+	border-left: 0px;
+	border-right: 0px;
+}
+.station, .saleprice{
+	font-size: 15px;
+	font-family: µ¸¿ò;
+}
+.station{
+	text-align: left;
+	margin-top: 10px;
+}
+.saleprice{
+	margin-right: 15%;
+	text-align: right;
+}
+.mpb{
+	margin-left: -50%;
+	width: 40px;
+	height: 40px;
+	margin-top: 10px;
+}
+#asset{
+	width: 100%;
+	border-color: blue;
+	border-style: double;
+	border-top: 1px;
+	border-bottom: 1px;	
+	border-left: 0px;
+	border-right: 0px;
+}
+#assetT{
+	margin-left: 15%;
+}
+#assetM{
+	margin-left: 50%;
+	margin-top: -3%;
+}
+#btn{
+	position: absolute;
+	width: 100%;
+	top: 70%;
+}
+#btnEmail, #btnPW, #btnLogout, #deleteplayer{
+	float: left;
+	width: 21%;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin: 0.5%;
+	background-color: #4F4F4F;
+	border-radius: 5px;
+}
+#btnEmail{
+	margin-left: 4%;
+}
+#btnLogout{
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+#btn1, #btn2, #btn3, #btn4{
+	color: white;
+}

@@ -1,0 +1,19 @@
+html, body{
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	font-weight: bold;
+	text-align: center;
+	background-color:#FFECD4; 
+}
+div{
+	margin: 0px;
+}
+#links{
+	color: white;
+	text-decoration: none;
+	background-color: #4F4F4F;
+	font-family: µ¸¿ò;
+	font-weight: normal;
+	font-size: 15px;
+}

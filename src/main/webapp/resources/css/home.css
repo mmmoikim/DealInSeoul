@@ -1,0 +1,29 @@
+html, body{
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	background-color: #FFECD4;
+}
+a{
+	color: black;
+	text-decoration: none;
+}
+#info{
+	padding-top: 30px;
+	text-align: right;
+	font-family: µ¸¿ò;
+	padding-right: 15%;
+}
+#img{
+	width: 130px;
+	height: 130px;
+}
+fieldset{
+	border-radius: 20px;
+}
+#infoname{
+	text-align: right;
+	margin-right: 5%;
+	margin-bottom: 1%;
+	font-family: µ¸¿ò;
+}

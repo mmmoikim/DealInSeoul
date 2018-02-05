@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="dis.query.mapper">
+    
+      <insert id="insertplayer" parameterType="com.dis.dis.vo.PlayerVO">
+    	insert into DIS_PLAYER(player_id, pw, asset, money, accessdate, email, title_id)
+    	values(#{id}, #{pw}, #{asset}, #{money}, #{accessDate}, #{email}, #{title})
+    </insert>
+    
+    <select id="login" parameterType="com.dis.dis.vo.PlayerVO" resultType="java.util.Map">
+    select player_id, email, asset, money, accessdate from DIS_PLAYER where email=#{email} and pw=#{pw}
+    </select>
+    
+    <update id="access" parameterType="com.dis.dis.vo.PlayerVO">
+	update DIS_PLAYER 
+	set accessdate = #{accessDate}
+	where email = #{email}
+	</update>
+	
+	<update id="changepw" parameterType="java.util.Map">
+	update DIS_PLAYER 
+	set pw = #{newpw}
+	where pw = #{currentpw}
+	</update>
+	
+	<update id="changeemail" parameterType="com.dis.dis.vo.PlayerVO">
+	update DIS_PLAYER 
+	set email = #{email}
+	where pw = #{pw}
+	</update>
+	
+	<update id="setmoney" parameterType="com.dis.dis.vo.PlayerVO">
+	update DIS_PLAYER 
+	set money = money + #{money}
+	where email = #{email}
+	</update>
+	
+	<select id="getmoney" parameterType="String" resultType="int">
+	select money
+	from DIS_player
+	where email = #{email}
+	</select>
+	
+	<select id="getmoneywithid" parameterType="String" resultType="int">
+	select money
+	from DIS_player
+	where player_id = #{id}
+	</select>
+	
+	<select id="gettitle" parameterType="String" resultType="String">
+	select t.title_name
+	from DIS_title t, dis_player p
+	where t.title_id = p.title_id and player_id = #{id}
+	</select>
+	
+	<select id="getpropertylist" parameterType="String" resultType="java.util.Map">
+	select p.property_name, s.station_name, g.invest_Count, g.player_id
+	from dis_playergame g, dis_property p, dis_station s
+	where g.station_id = s.station_id and g.property_id =  p.property_id and s.station_name = #{station} 
+	</select>
+	
+	<update id="setassetbymoney" parameterType="java.util.Map">
+	update DIS_PLAYER 
+	set asset = asset + #{lottery} * 0.5
+	where email = #{email}
+	</update>
+	
+	<select id="selectstationid" parameterType="String" resultType="String">
+	select station_id from dis_station where station_name= #{station}
+	</select>
+	
+	<select id="selectpropertyid" parameterType="String" resultType="String">
+	select property_id from dis_property where property_name = #{property_name}
+	</select>
+	
+	<select id="selectstationname" parameterType="String" resultType="String">
+	select station_name from dis_station where station_id= #{STATION_ID}
+	</select>
+	
+		<select id="selectpropertyname" parameterType="String" resultType="String">
+	select property_name from dis_property where property_id = #{PROPERTY_ID}
+	</select>
+	
+	<insert id="insertstation" parameterType="java.util.Map">
+	insert into dis_station values(#{station_id}, #{station_name})
+	</insert>
+
+	<insert id="insertplayergame" parameterType="java.util.Map">
+	insert into dis_playergame(property_id, station_id, player_id, invest_count, sale_price)
+	values (#{propertyID}, #{stationId}, #{playerId}, 0 , #{salePrice})
+	</insert>
+	
+	<update id="subtractmoney" parameterType="java.util.Map">
+	update dis_player set money = money - #{salePrice} where player_id = #{playerId}
+	</update>
+	
+	<select id="sumsaleprice" parameterType="String" resultType="int">
+	select sum(sale_price) from dis_playergame where player_id = #{playerId}
+	</select>
+	
+	<update id="calcasset" parameterType="java.util.Map">
+	update dis_player set asset = money*0.5 + #{salePrice} where player_id = #{playerId}
+	</update>
+	
+	<update id="changeowner" parameterType="java.util.Map">
+	update dis_playergame set player_id = #{playerId} where property_id=#{propertyID} and station_id=#{stationId}
+	</update>
+	
+	<update id="refund" parameterType="java.util.Map">
+	update dis_player set money = money + #{salePrice} * 0.6 where player_id = #{playerId}
+	</update>
+	
+	<update id="refundbysale" parameterType="java.util.Map">
+	update dis_player set money = money + #{salePrice} * 0.8 where player_id = #{playerId}
+	</update>
+	
+	<delete id="deleteproperty" parameterType="String">
+	delete from dis_playergame where player_id = #{playerId}
+	</delete>
+	
+	<select id="selectinvestcost" parameterType="String" resultType="int" >
+	select invest_price from dis_property where property_id =  #{propertyId}
+	</select>
+	
+	<update id="invest" parameterType="java.util.Map">
+	update dis_playergame 
+	set invest_count = invest_count +1, sale_price = sale_price + #{investCost}
+	where station_id = #{stationId} and property_id = #{propertyId}
+	</update>
+	
+	<select id="getasset" parameterType="String" resultType="int">
+	select asset from dis_player where player_id = #{playerId}
+	</select>
+	
+	<select id="getmypropertylist"  parameterType="String" resultType = "java.util.Map">
+	select property_id,station_id, sale_price
+	from dis_playergame
+	where player_id = #{playerId}
+	</select>
+	
+	
+	<select id="getplayerrank" parameterType="int" resultType="int">
+	select count(player_id)+1 as rank
+	from DIS_PLAYER
+	where asset > #{asset}
+	</select>
+	
+	<select id="getplayercount" resultType="int">
+	select count(*) as count
+	from DIS_PLAYER
+	</select>
+	
+	<select id="getrankinglist" resultType="java.util.Map">
+	SELECT rank() OVER (ORDER BY asset desc) as rank, player_id, title_id, asset  
+	FROM dis_player
+	</select>
+	<select id="deletecheck" parameterType="String" resultType="Integer">
+	 select count(player_id) 
+	 from dis_player
+	 where player_id=#{player_id}
+	</select>
+	<update id="deleteplayergame" parameterType="String">
+	DELETE FROM DIS_PLAYERGAME
+      WHERE player_id = #{player_id}
+	</update>
+	<update id="deleteplayer" parameterType="String">
+	  delete from dis_player
+	  where player_id=#{player_id}
+	</update>
+	<update id="updatetitle" parameterType="java.util.Map">
+	update DIS_PLAYER
+	set TITLE_ID= #{titleId}, MONEY=#{money}, ASSET=#{asset}
+	where PLAYER_ID = #{playerId}
+	</update>
+	<select id="emailC" parameterType="String" resultType="Integer">
+		select count(email) from dis_player where email=#{email}
+	</select>
+	<select id="idC" parameterType="String" resultType="Integer">
+		select count(player_id) from dis_player where player_id=#{player_id}
+	</select>
+
+	<select id="searchpassword" parameterType="String" resultType="String">
+		select pw from DIS_PLAYER where email=#{email}
+	</select>
+	
+	<delete id="deleteplayergameD">
+   		delete from dis_playergame
+   	</delete>
+    </mapper>
